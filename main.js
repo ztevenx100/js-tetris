@@ -66,6 +66,7 @@ document.addEventListener('keydown', event => {
     if (checkCollision()){
       piece.position.y--;
       solidifyPiece();
+      removeRows();
     }
   }
 })
@@ -106,6 +107,7 @@ function checkCollision() {
   });
 }
 
+//5. Solidificar figura
 function solidifyPiece() {
   piece.shape.forEach((row, x) => {
     row.forEach((value, y) => {
@@ -119,8 +121,19 @@ function solidifyPiece() {
   piece.position.y = 0;
 }
 
-// 5. Eliminar linea
-
+// 6. Eliminar linea
 function removeRows() {
-  
+  const rowsToRemove = [];
+
+  board.forEach((row, y) => {
+    if(row.every(value => value ===1)){
+      rowsToRemove.push(y);
+    }
+  });
+
+  rowsToRemove.forEach(y => {
+    board.splice(y,1);
+    const newRows = Array(BOARD_WIDTH).fill(0);
+    board.unshift(newRows);
+  });
 }
