@@ -21,7 +21,6 @@ const piece = {
 
 canvas.width = BLOCK_SIZE * BOARD_WIDTH;
 canvas.height = BLOCK_SIZE * BOARD_HEIGHT;
-
 context.scale(BLOCK_SIZE, BLOCK_SIZE);
 
 // 2. Game loop
