@@ -3,6 +3,8 @@ import { BLOCK_SIZE, PIECES, BOARD_WIDTH, BOARD_HEIGHT, EVENT_MOVEMENTS } from '
 
 const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
+const $score = document.querySelector('span');
+const $section = document.querySelector('section');
 let dropCounter = 0;
 let lastTime = 0;
 let score = 0;
@@ -64,6 +66,7 @@ function draw() {
     })
   });
 
+  $score.innerText = score;
 }
 
 // 3. Board
@@ -72,17 +75,17 @@ function createBoard (width, height) {
 }
 
 document.addEventListener('keydown', event => {
-  if (event.key === 'ArrowLeft') {
+  if (event.key === EVENT_MOVEMENTS.LEFT) {
     piece.position.x--;
     if (checkCollision()) piece.position.x++;
   }
 
-  if (event.key === 'ArrowRight') {
+  if (event.key === EVENT_MOVEMENTS.RIGHT) {
     piece.position.x++;
     if (checkCollision()) piece.position.x--;
   }
 
-  if (event.key === 'ArrowDown') {
+  if (event.key === EVENT_MOVEMENTS.DOWN) {
     piece.position.y++;
     if (checkCollision()){
       piece.position.y--;
@@ -91,7 +94,7 @@ document.addEventListener('keydown', event => {
     }
   }
 
-  if (event.key === 'ArrowUp') {
+  if (event.key === EVENT_MOVEMENTS.ROTATE) {
     const rotated = [];
 
     for (let i = 0; i < piece.shape[0].length; i++) {
@@ -111,7 +114,14 @@ document.addEventListener('keydown', event => {
   }
 })
 
-update();
+$section.addEventListener('click', () => {
+  update();
+
+  $section.remove();
+  const audio = new window.Audio('./tetris.mp3');
+  audio.volume = 0.5;
+  audio.play();
+})
 
 // 4. Collision
 function checkCollision() {
