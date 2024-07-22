@@ -7,11 +7,28 @@
     <title>Tetris App</title>
   </head>
   <body>
-    <div id="app">
-      <section>Start Game</section>
-      <canvas></canvas>
-    </div>
-    <h2><strong>Puntuación: <span></span></strong></h2>
+    <main class="container min-h-screen game">
+      <header>
+        <h1>Tetris</h1>
+      </header>
+      <section class="game-screen">
+        <div id="app">
+          <section class="init-screen">Start Game</section>
+          <canvas></canvas>
+        </div>
+      </section>
+      <section class="score">
+        <h2><strong>Puntuación: <span></span></strong></h2>
+      </section>
+      <section class="buttons-panel">
+        <button type="button" id="music">Musica</button>
+        <button type="button" id="start">Comenzar</button>
+      </section>
+    </main>
+
+    <footer>
+      <small>Pedro Steven Castiblanco</small>
+    </footer>
     <script type="module" src="/main.js"></script>
   </body>
 </html>

@@ -4,10 +4,14 @@ import { BLOCK_SIZE, PIECES, BOARD_WIDTH, BOARD_HEIGHT, EVENT_MOVEMENTS } from '
 const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
 const $score = document.querySelector('span');
-const $section = document.querySelector('section');
+const $section = document.querySelector('section.init-screen');
+const audio = new window.Audio('./tetris.mp3');
+const btnMusic = document.querySelector('button#music');
 let dropCounter = 0;
 let lastTime = 0;
 let score = 0;
+let start = false;
+let isPlaying = true;
 
 const board = createBoard(BOARD_WIDTH, BOARD_HEIGHT);
 
@@ -21,8 +25,8 @@ const piece = {
 
 canvas.width = BLOCK_SIZE * BOARD_WIDTH;
 canvas.height = BLOCK_SIZE * BOARD_HEIGHT;
-
 context.scale(BLOCK_SIZE, BLOCK_SIZE);
+btnMusic.onclick = playMusic;
 
 // 2. Game loop
 function update(time = 0) {
@@ -118,9 +122,10 @@ $section.addEventListener('click', () => {
   update();
 
   $section.remove();
-  const audio = new window.Audio('./tetris.mp3');
+ // audio = new window.Audio('./tetris.mp3');
   audio.volume = 0.5;
   audio.play();
+  isPlaying = true;
 })
 
 // 4. Collision
@@ -182,4 +187,15 @@ function removeRows() {
 //7. obtener pieza random
 function getRandomPiece() {
   return PIECES[Math.floor(Math.random() * PIECES.length)]
+}
+
+function playMusic() {
+  
+  if (isPlaying) {
+    audio.pause();
+  } else {
+    audio.play();
+  }
+  
+  isPlaying = !isPlaying;
 }
