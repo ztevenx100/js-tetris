@@ -1,10 +1,10 @@
-import { BLOCK_SIZE, PIECES, BOARD_WIDTH, BOARD_HEIGHT, EVENT_MOVEMENTS } from './consts';
+import { BLOCK_SIZE, PIECES, BOARD_WIDTH, BOARD_HEIGHT, EVENT_MOVEMENTS } from './consts.js';
 
 const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
 const $score = document.querySelector('span');
 //const $section = document.querySelector('section.init-screen');
-const audio = new window.Audio('./tetris.mp3');
+const audio = new window.Audio('./assets/tetris.mp3');
 const btnMusic = document.querySelector('button#music');
 const btnStart = document.querySelector('button#start');
 let dropCounter = 0;
@@ -62,7 +62,7 @@ function draw() {
   board.forEach((row, y) => {
     row.forEach((value, x) => {
       if (value === 1) {
-        context.fillStyle = '#FF0';
+        context.fillStyle = '#ff0';
         context.fillRect(x, y, 1, 1);
       }
     })
@@ -71,7 +71,7 @@ function draw() {
   piece.shape.forEach((row, y) => {
     row.forEach((value, x) => {
       if (value) {
-        context.fillStyle = '#F00';
+        context.fillStyle = '#fff';
         context.fillRect(x + piece.position.x, y + piece.position.y, 1, 1);
       }
     })
@@ -131,7 +131,8 @@ function playGame() {
   //$section.remove();
   audio.volume = 0.5;
   audio.play();
-  audio.loop();
+  audio.loop = true;
+  btnMusic.innerText = 'Parar musica';
   isPlaying = true;
 }
 
@@ -200,8 +201,10 @@ function playMusic() {
   
   if (isPlaying) {
     audio.pause();
+    btnMusic.innerText = 'Iniciar musica';
   } else {
     audio.play();
+    btnMusic.innerText = 'Parar musica';
   }
   
   isPlaying = !isPlaying;
