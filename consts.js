@@ -7,6 +7,10 @@ export const EVENT_MOVEMENTS = {
   DOWN: 'ArrowDown',
   RIGHT: 'ArrowRight',
   ROTATE: 'ArrowUp',
+  LEFT_LETTER: 'a',
+  DOWN_LETTER: 's',
+  RIGHT_LETTER: 'd',
+  ROTATE_LETTER: 'w',
 }
 
 export const PIECES = [

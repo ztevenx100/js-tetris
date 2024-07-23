@@ -7,7 +7,6 @@
 
   color-scheme: dark light;
   color: rgba(255, 255, 255, 0.87);
-  //background-color: #fff;
   background: rgb(131,58,180);
   background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
 
@@ -26,10 +25,7 @@
 body{
   margin: 0;
   padding: 0;
-  //display: grid;
-  //place-content: center;
-  height: 100vh;
-  //overflow: hidden;
+  scrollbar-width: thin;
 }
 
 input, button, textarea, select { font: inherit; }
@@ -53,7 +49,6 @@ img, video, svg { height: auto; max-width: 100%; }
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  min-height: 100vh;
   
   @media (min-width: 640px) {
     max-width: 640px;
@@ -71,8 +66,11 @@ img, video, svg { height: auto; max-width: 100%; }
 .game{
   background-color:var(--bg-color-game);
   backdrop-filter: blur(4px);
+  display: grid;
+  grid-template-columns: 200px 1fr;
 
   & header{
+    grid-column: span 2;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -110,9 +108,18 @@ section{
     justify-content: center;
     gap: 5px;
     padding: 1em;
+  }
+
+  &.play-buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 1em;
+    flex-wrap: wrap;
     & kbd{
       background-color:var(--bg-color);
-      padding: 2px;
+      padding: 5px;
       border-radius: 5px;
     }
   }
@@ -123,6 +130,7 @@ section{
     justify-content: center;
     gap: 5px;
     padding: 1em;
+    flex-wrap: wrap;
     & button{
       width:100%;
       border-radius: 5px;
