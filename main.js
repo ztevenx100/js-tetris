@@ -4,7 +4,7 @@ import { BLOCK_SIZE, PIECES, BOARD_WIDTH, BOARD_HEIGHT, EVENT_MOVEMENTS } from '
 const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
 const $score = document.querySelector('span');
-const $section = document.querySelector('section.init-screen');
+//const $section = document.querySelector('section.init-screen');
 const audio = new window.Audio('./tetris.mp3');
 const btnMusic = document.querySelector('button#music');
 const btnStart = document.querySelector('button#start');
@@ -124,15 +124,6 @@ document.addEventListener('keydown', event => {
     if (checkCollision()) piece.shape = previousShape;
     
   }
-})
-
-$section.addEventListener('click', () => {
-  update();
-
-  $section.remove();
-  audio.volume = 0.5;
-  audio.play();
-  isPlaying = true;
 })
 
 function playGame() {
