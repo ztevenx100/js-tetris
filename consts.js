@@ -10,22 +10,22 @@ export const EVENT_MOVEMENTS = {
 }
 
 export const PIECES = [
-  [ // la pieza amarilla
+  [ // Pieza amarilla
     [1, 1],
     [1, 1]
   ],
-  [
+  [ // Pieza azul
     [1, 1, 1, 1]
   ],
-  [ // es la pieza lila
+  [ // Pieza lila
     [0, 1, 0],
     [1, 1, 1]
   ],
-  [ // la pieza verde
+  [ // Pieza verde
     [1, 1, 0],
     [0, 1, 1]
   ],
-  [
+  [ // Pieza roja
     [0, 1, 1],
     [1, 1, 0]
   ],
