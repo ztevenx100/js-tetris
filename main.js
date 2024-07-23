@@ -87,17 +87,17 @@ function createBoard (width, height) {
 }
 
 document.addEventListener('keydown', event => {
-  if (event.key === EVENT_MOVEMENTS.LEFT) {
+  if (event.key === EVENT_MOVEMENTS.LEFT || event.key === EVENT_MOVEMENTS.LEFT_LETTER) {
     piece.position.x--;
     if (checkCollision()) piece.position.x++;
   }
 
-  if (event.key === EVENT_MOVEMENTS.RIGHT) {
+  if (event.key === EVENT_MOVEMENTS.RIGHT || event.key === EVENT_MOVEMENTS.RIGHT_LETTER) {
     piece.position.x++;
     if (checkCollision()) piece.position.x--;
   }
 
-  if (event.key === EVENT_MOVEMENTS.DOWN) {
+  if (event.key === EVENT_MOVEMENTS.DOWN || event.key === EVENT_MOVEMENTS.DOWN_LETTER) {
     piece.position.y++;
     if (checkCollision()){
       piece.position.y--;
@@ -106,7 +106,7 @@ document.addEventListener('keydown', event => {
     }
   }
 
-  if (event.key === EVENT_MOVEMENTS.ROTATE) {
+  if (event.key === EVENT_MOVEMENTS.ROTATE || event.key === EVENT_MOVEMENTS.ROTATE_LETTER) {
     const rotated = [];
 
     for (let i = 0; i < piece.shape[0].length; i++) {
@@ -132,6 +132,7 @@ function playGame() {
   //$section.remove();
   audio.volume = 0.5;
   audio.play();
+  audio.loop();
   isPlaying = true;
 }
 
