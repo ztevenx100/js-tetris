@@ -1,5 +1,4 @@
-import './style.css';
-import { BLOCK_SIZE, PIECES, BOARD_WIDTH, BOARD_HEIGHT, EVENT_MOVEMENTS } from './consts';
+import { BLOCK_SIZE, PIECES, BOARD_WIDTH, BOARD_HEIGHT, EVENT_MOVEMENTS } from './consts.js';
 
 const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
