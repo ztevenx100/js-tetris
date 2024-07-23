@@ -1,12 +1,15 @@
 :root {
-  --bg-color-game: #242424;
+  --bg-color-game: #24242466;
+  --bg-color: #242424;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: dark light;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #fff;
+  //background-color: #fff;
+  background: rgb(131,58,180);
+  background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -26,6 +29,7 @@ body{
   //display: grid;
   //place-content: center;
   height: 100vh;
+  //overflow: hidden;
 }
 
 input, button, textarea, select { font: inherit; }
@@ -47,10 +51,9 @@ img, video, svg { height: auto; max-width: 100%; }
 
 .container {
   width: 100%;
-  padding: 1rem; 
   margin-left: auto;
   margin-right: auto;
-  max-height: 100vh;
+  min-height: 100vh;
   
   @media (min-width: 640px) {
     max-width: 640px;
@@ -67,6 +70,7 @@ img, video, svg { height: auto; max-width: 100%; }
 
 .game{
   background-color:var(--bg-color-game);
+  backdrop-filter: blur(4px);
 
   & header{
     display: flex;
@@ -94,15 +98,25 @@ section{
     align-items: center;
     justify-content: center;
     padding: 1em;
+
+    & canvas {
+      border: 1px solid #000;
+    }
   }
 
   &.score{
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 5px;
     padding: 1em;
+    & kbd{
+      background-color:var(--bg-color);
+      padding: 2px;
+      border-radius: 5px;
+    }
   }
-
+  
   &.buttons-panel{
     display: flex;
     align-items: center;
@@ -114,4 +128,12 @@ section{
       border-radius: 5px;
     }
   }
+}
+
+footer{
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
 }

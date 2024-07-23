@@ -7,6 +7,7 @@ const $score = document.querySelector('span');
 const $section = document.querySelector('section.init-screen');
 const audio = new window.Audio('./tetris.mp3');
 const btnMusic = document.querySelector('button#music');
+const btnStart = document.querySelector('button#start');
 let dropCounter = 0;
 let lastTime = 0;
 let score = 0;
@@ -27,6 +28,7 @@ canvas.width = BLOCK_SIZE * BOARD_WIDTH;
 canvas.height = BLOCK_SIZE * BOARD_HEIGHT;
 context.scale(BLOCK_SIZE, BLOCK_SIZE);
 btnMusic.onclick = playMusic;
+btnStart.onclick = playGame;
 
 // 2. Game loop
 function update(time = 0) {
@@ -49,8 +51,14 @@ function update(time = 0) {
 }
 
 function draw() {
-  context.fillStyle = '#000';
   context.fillRect(0, 0, canvas.width, canvas.height);
+  //context.fillStyle = '#000';
+  for (let x = 0; x < canvas.width; x++) {
+    for (let y = 0; y < canvas.height; y++) {
+      context.fillStyle = (x + y) % 2 === 0 ? '#222' : '#444'; // Alternar colores para una apariencia de cuadrícula
+      context.fillRect(x, y, 1, 1);
+    }
+  }
 
   board.forEach((row, y) => {
     row.forEach((value, x) => {
@@ -122,11 +130,19 @@ $section.addEventListener('click', () => {
   update();
 
   $section.remove();
- // audio = new window.Audio('./tetris.mp3');
   audio.volume = 0.5;
   audio.play();
   isPlaying = true;
 })
+
+function playGame() {
+  update();
+
+  //$section.remove();
+  audio.volume = 0.5;
+  audio.play();
+  isPlaying = true;
+}
 
 // 4. Collision
 function checkCollision() {
