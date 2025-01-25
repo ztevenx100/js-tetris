@@ -7,4 +7,4 @@ Desarrollo de juego con vanilla JavaScript.
 
 ### Nota
 
- - Proyecto movido al repositorio de coleccion de proyectos en JavaScript
+ - Proyecto movido al repositorio de coleccion de proyectos en JavaScript [Coleccion de proyectos](https://github.com/ztevenx100/js_projects-collection)
